@@ -1,0 +1,61 @@
+name: CI
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+
+jobs:
+  cpp:
+    name: C++ build + tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install CMake
+        uses: lukka/get-cmake@latest
+      - name: Configure
+        run: cmake -S . -B build -DCMAKE_BUILD_TYPE=Release
+      - name: Build
+        run: cmake --build build -j
+      - name: Run unit tests
+        run: ctest --test-dir build --output-on-failure
+      - name: Smoke-test engine on dataset
+        run: |
+          echo '{"from":"BASE_A","to":"Z1","method":"astar"}' | ./build/route_engine shortest_path --graph datasets/zones.json
+          echo '{"method":"held_karp"}' | ./build/route_engine tsp --graph datasets/zones.json > /dev/null
+          echo '{}' | ./build/route_engine max_flow --graph datasets/zones.json > /dev/null
+          echo '{"with_backup":true}' | ./build/route_engine mst --graph datasets/zones.json > /dev/null
+
+  python:
+    name: Python scheduler + scenarios
+    runs-on: ubuntu-latest
+    needs: cpp
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install CMake
+        uses: lukka/get-cmake@latest
+      - name: Build engine (needed by scheduler)
+        run: cmake -S . -B build -DCMAKE_BUILD_TYPE=Release && cmake --build build -j
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install deps
+        run: pip install -r python_scheduler/requirements.txt
+      - name: Regenerate + validate dataset
+        run: python datasets/generate_zones.py
+      - name: Build real-coordinate GIS sample + ingest
+        run: |
+          python gis/generate_terrain.py
+          python -m gis.pipeline --out datasets/zones_gis.json
+      - name: GIS layer tests
+        run: pytest gis/tests -q
+      - name: Routing (OR-Tools VRP) tests
+        run: pytest routing/tests -q
+      - name: Routing validation vs exact (Held-Karp)
+        run: python -m routing.benchmark
+      - name: Pytest (scheduler)
+        run: pytest python_scheduler/test_scheduler.py -q
+      - name: Run all simulation scenarios (synthetic + GIS terrain)
+        run: |
+          python python_scheduler/run_scenarios.py
+          ZONES_JSON=$PWD/datasets/zones_gis.json python python_scheduler/run_scenarios.py

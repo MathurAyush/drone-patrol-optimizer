@@ -1,0 +1,77 @@
+{
+ "type": "FeatureCollection",
+ "crs": {
+  "type": "name",
+  "properties": {
+   "name": "urn:ogc:def:crs:OGC:1.3:CRS84"
+  }
+ },
+ "features": [
+  {
+   "type": "Feature",
+   "properties": {
+    "name": "Protected Core Area"
+   },
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       79.4,
+       29.31
+      ],
+      [
+       79.45,
+       29.31
+      ],
+      [
+       79.45,
+       29.35
+      ],
+      [
+       79.4,
+       29.35
+      ],
+      [
+       79.4,
+       29.31
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "name": "Restricted Buffer"
+   },
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       79.5,
+       29.38
+      ],
+      [
+       79.535,
+       29.38
+      ],
+      [
+       79.535,
+       29.41
+      ],
+      [
+       79.5,
+       29.41
+      ],
+      [
+       79.5,
+       29.38
+      ]
+     ]
+    ]
+   }
+  }
+ ]
+}

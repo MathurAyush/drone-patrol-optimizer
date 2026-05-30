@@ -1,0 +1,933 @@
+{
+ "type": "FeatureCollection",
+ "crs": {
+  "type": "name",
+  "properties": {
+   "name": "urn:ogc:def:crs:OGC:1.3:CRS84"
+  }
+ },
+ "features": [
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     79.4542,
+     29.3803
+    ]
+   },
+   "properties": {
+    "id": "CMD",
+    "kind": "COMMAND",
+    "label": "Control Centre",
+    "elevation_m": 1449.1
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     79.36,
+     29.3
+    ]
+   },
+   "properties": {
+    "id": "BASE_A",
+    "kind": "BASE",
+    "label": "Ground Station A",
+    "speed_kmh": 55,
+    "elevation_m": 1706.4
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     79.55,
+     29.45
+    ]
+   },
+   "properties": {
+    "id": "BASE_B",
+    "kind": "BASE",
+    "label": "Ground Station B",
+    "speed_kmh": 55,
+    "elevation_m": 1166.9
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     79.44793205414369,
+     29.409617921606138
+    ]
+   },
+   "properties": {
+    "id": "Z1",
+    "kind": "ZONE",
+    "label": "Survey Zone 1",
+    "priority": 4.8,
+    "elevation_m": 1617.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     79.48726371225192,
+     29.419836180923575
+    ]
+   },
+   "properties": {
+    "id": "Z2",
+    "kind": "ZONE",
+    "label": "Survey Zone 2",
+    "priority": 5.4,
+    "elevation_m": 1281.9
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     79.37249184490395,
+     29.280160827190908
+    ]
+   },
+   "properties": {
+    "id": "Z3",
+    "kind": "ZONE",
+    "label": "Survey Zone 3",
+    "priority": 5.2,
+    "elevation_m": 1662.8
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     79.54078209788709,
+     29.285202983751105
+    ]
+   },
+   "properties": {
+    "id": "Z4",
+    "kind": "ZONE",
+    "label": "Survey Zone 4",
+    "priority": 5.0,
+    "elevation_m": 1108.1
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     79.32311490370017,
+     29.334011362659705
+    ]
+   },
+   "properties": {
+    "id": "Z5",
+    "kind": "ZONE",
+    "label": "Survey Zone 5",
+    "priority": 2.6,
+    "elevation_m": 1748.4
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     79.39820674899325,
+     29.35488625151345
+    ]
+   },
+   "properties": {
+    "id": "Z6",
+    "kind": "ZONE",
+    "label": "Survey Zone 6",
+    "priority": 5.8,
+    "elevation_m": 1513.7
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     79.42217530184946,
+     29.375753516893667
+    ]
+   },
+   "properties": {
+    "id": "Z7",
+    "kind": "ZONE",
+    "label": "Survey Zone 7",
+    "priority": 6.0,
+    "elevation_m": 1451.7
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     79.38106621139832,
+     29.30662442731475
+    ]
+   },
+   "properties": {
+    "id": "Z8",
+    "kind": "ZONE",
+    "label": "Survey Zone 8",
+    "priority": 7.6,
+    "elevation_m": 1651.8
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     79.47524219109631,
+     29.439438834415355
+    ]
+   },
+   "properties": {
+    "id": "C1",
+    "kind": "CHECKPOINT",
+    "label": "Checkpoint 1",
+    "elevation_m": 1500.9
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     79.42000890449576,
+     29.41075803608707
+    ]
+   },
+   "properties": {
+    "id": "C2",
+    "kind": "CHECKPOINT",
+    "label": "Checkpoint 2",
+    "elevation_m": 1579.3
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     79.48461769384302,
+     29.436323433883757
+    ]
+   },
+   "properties": {
+    "id": "C3",
+    "kind": "CHECKPOINT",
+    "label": "Checkpoint 3",
+    "elevation_m": 1371.1
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     79.48969498895606,
+     29.365718235199623
+    ]
+   },
+   "properties": {
+    "id": "C4",
+    "kind": "CHECKPOINT",
+    "label": "Checkpoint 4",
+    "elevation_m": 1167.2
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     79.4801777465357,
+     29.360853814146147
+    ]
+   },
+   "properties": {
+    "id": "C5",
+    "kind": "CHECKPOINT",
+    "label": "Checkpoint 5",
+    "elevation_m": 1186.4
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     79.57513388870126,
+     29.40375814281702
+    ]
+   },
+   "properties": {
+    "id": "C6",
+    "kind": "CHECKPOINT",
+    "label": "Checkpoint 6",
+    "elevation_m": 1094.2
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     79.38569684267046,
+     29.463878813166627
+    ]
+   },
+   "properties": {
+    "id": "C7",
+    "kind": "CHECKPOINT",
+    "label": "Checkpoint 7",
+    "elevation_m": 1676.9
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     79.45554698207675,
+     29.466532280495898
+    ]
+   },
+   "properties": {
+    "id": "C8",
+    "kind": "CHECKPOINT",
+    "label": "Checkpoint 8",
+    "elevation_m": 1676.7
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     79.50912402583785,
+     29.35623777416373
+    ]
+   },
+   "properties": {
+    "id": "C9",
+    "kind": "CHECKPOINT",
+    "label": "Checkpoint 9",
+    "elevation_m": 1088.6
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     79.51881469291254,
+     29.286127611038093
+    ]
+   },
+   "properties": {
+    "id": "C10",
+    "kind": "CHECKPOINT",
+    "label": "Checkpoint 10",
+    "elevation_m": 1101.8
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     79.44420719470995,
+     29.421988421531314
+    ]
+   },
+   "properties": {
+    "id": "R1",
+    "kind": "RELAY",
+    "label": "Relay 1",
+    "antenna_h_m": 30.0,
+    "activation_cost": 15.9,
+    "elevation_m": 1570.1
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     79.54701531202296,
+     29.299427261013342
+    ]
+   },
+   "properties": {
+    "id": "R2",
+    "kind": "RELAY",
+    "label": "Relay 2",
+    "antenna_h_m": 30.0,
+    "activation_cost": 8.4,
+    "elevation_m": 1196.8
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     79.33877227048744,
+     29.404029423138937
+    ]
+   },
+   "properties": {
+    "id": "R3",
+    "kind": "RELAY",
+    "label": "Relay 3",
+    "antenna_h_m": 30.0,
+    "activation_cost": 8.6,
+    "elevation_m": 1704.1
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     79.31149858188185,
+     29.374761721975286
+    ]
+   },
+   "properties": {
+    "id": "R4",
+    "kind": "RELAY",
+    "label": "Relay 4",
+    "antenna_h_m": 30.0,
+    "activation_cost": 13.5,
+    "elevation_m": 1752.5
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     79.55739690898284,
+     29.39007061628069
+    ]
+   },
+   "properties": {
+    "id": "R5",
+    "kind": "RELAY",
+    "label": "Relay 5",
+    "antenna_h_m": 30.0,
+    "activation_cost": 16.6,
+    "elevation_m": 1096.8
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     79.55695069324985,
+     29.48114745027698
+    ]
+   },
+   "properties": {
+    "id": "R6",
+    "kind": "RELAY",
+    "label": "Relay 6",
+    "antenna_h_m": 30.0,
+    "activation_cost": 10.3,
+    "elevation_m": 1288.8
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     79.36916808379104,
+     29.397140713301372
+    ]
+   },
+   "properties": {
+    "id": "R7",
+    "kind": "RELAY",
+    "label": "Relay 7",
+    "antenna_h_m": 30.0,
+    "activation_cost": 19.3,
+    "elevation_m": 1744.2
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     79.31238431889278,
+     29.464459440703777
+    ]
+   },
+   "properties": {
+    "id": "R8",
+    "kind": "RELAY",
+    "label": "Relay 8",
+    "antenna_h_m": 30.0,
+    "activation_cost": 8.1,
+    "elevation_m": 1539.2
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     79.54235912125489,
+     29.398639863497028
+    ]
+   },
+   "properties": {
+    "id": "R9",
+    "kind": "RELAY",
+    "label": "Relay 9",
+    "antenna_h_m": 30.0,
+    "activation_cost": 18.7,
+    "elevation_m": 1074.5
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     79.43363087774698,
+     29.45141060893838
+    ]
+   },
+   "properties": {
+    "id": "R10",
+    "kind": "RELAY",
+    "label": "Relay 10",
+    "antenna_h_m": 30.0,
+    "activation_cost": 14.2,
+    "elevation_m": 1621.4
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     79.44853310173599,
+     29.489965821002848
+    ]
+   },
+   "properties": {
+    "id": "R11",
+    "kind": "RELAY",
+    "label": "Relay 11",
+    "antenna_h_m": 30.0,
+    "activation_cost": 8.0,
+    "elevation_m": 1895.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     79.5129839062152,
+     29.45356027351182
+    ]
+   },
+   "properties": {
+    "id": "R12",
+    "kind": "RELAY",
+    "label": "Relay 12",
+    "antenna_h_m": 30.0,
+    "activation_cost": 9.3,
+    "elevation_m": 1347.6
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     79.51318938053898,
+     29.429134914611545
+    ]
+   },
+   "properties": {
+    "id": "R13",
+    "kind": "RELAY",
+    "label": "Relay 13",
+    "antenna_h_m": 30.0,
+    "activation_cost": 8.5,
+    "elevation_m": 1110.7
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     79.39150799325022,
+     29.380064702230396
+    ]
+   },
+   "properties": {
+    "id": "R14",
+    "kind": "RELAY",
+    "label": "Relay 14",
+    "antenna_h_m": 30.0,
+    "activation_cost": 18.0,
+    "elevation_m": 1641.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     79.500174018338,
+     29.271025045107606
+    ]
+   },
+   "properties": {
+    "id": "R15",
+    "kind": "RELAY",
+    "label": "Relay 15",
+    "antenna_h_m": 30.0,
+    "activation_cost": 13.7,
+    "elevation_m": 932.5
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     79.44912411747653,
+     29.465239715772956
+    ]
+   },
+   "properties": {
+    "id": "R16",
+    "kind": "RELAY",
+    "label": "Relay 16",
+    "antenna_h_m": 30.0,
+    "activation_cost": 17.7,
+    "elevation_m": 1661.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     79.42640751663856,
+     29.38854581977078
+    ]
+   },
+   "properties": {
+    "id": "R17",
+    "kind": "RELAY",
+    "label": "Relay 17",
+    "antenna_h_m": 30.0,
+    "activation_cost": 12.7,
+    "elevation_m": 1499.1
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     79.37851122736795,
+     29.454252386748266
+    ]
+   },
+   "properties": {
+    "id": "R18",
+    "kind": "RELAY",
+    "label": "Relay 18",
+    "antenna_h_m": 30.0,
+    "activation_cost": 18.5,
+    "elevation_m": 1559.6
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     79.49019466188273,
+     29.266659556616798
+    ]
+   },
+   "properties": {
+    "id": "R19",
+    "kind": "RELAY",
+    "label": "Relay 19",
+    "antenna_h_m": 30.0,
+    "activation_cost": 12.0,
+    "elevation_m": 870.6
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     79.49008738954205,
+     29.4418390091647
+    ]
+   },
+   "properties": {
+    "id": "R20",
+    "kind": "RELAY",
+    "label": "Relay 20",
+    "antenna_h_m": 30.0,
+    "activation_cost": 16.6,
+    "elevation_m": 1386.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     79.55359489388792,
+     29.30100093972103
+    ]
+   },
+   "properties": {
+    "id": "R21",
+    "kind": "RELAY",
+    "label": "Relay 21",
+    "antenna_h_m": 30.0,
+    "activation_cost": 8.1,
+    "elevation_m": 1180.9
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     79.47446174511373,
+     29.31139271599625
+    ]
+   },
+   "properties": {
+    "id": "R22",
+    "kind": "RELAY",
+    "label": "Relay 22",
+    "antenna_h_m": 30.0,
+    "activation_cost": 16.1,
+    "elevation_m": 1198.4
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     79.38690861744625,
+     29.359975628831542
+    ]
+   },
+   "properties": {
+    "id": "R23",
+    "kind": "RELAY",
+    "label": "Relay 23",
+    "antenna_h_m": 30.0,
+    "activation_cost": 9.2,
+    "elevation_m": 1613.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     79.51872049961398,
+     29.307895396623824
+    ]
+   },
+   "properties": {
+    "id": "R24",
+    "kind": "RELAY",
+    "label": "Relay 24",
+    "antenna_h_m": 30.0,
+    "activation_cost": 12.5,
+    "elevation_m": 1209.3
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     79.4698991594841,
+     29.45286481109812
+    ]
+   },
+   "properties": {
+    "id": "R25",
+    "kind": "RELAY",
+    "label": "Relay 25",
+    "antenna_h_m": 30.0,
+    "activation_cost": 10.8,
+    "elevation_m": 1583.6
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     79.33109955378033,
+     29.357389960643754
+    ]
+   },
+   "properties": {
+    "id": "R26",
+    "kind": "RELAY",
+    "label": "Relay 26",
+    "antenna_h_m": 30.0,
+    "activation_cost": 11.9,
+    "elevation_m": 1749.7
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     79.38478173388842,
+     29.35389784831126
+    ]
+   },
+   "properties": {
+    "id": "R27",
+    "kind": "RELAY",
+    "label": "Relay 27",
+    "antenna_h_m": 30.0,
+    "activation_cost": 19.7,
+    "elevation_m": 1608.9
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     79.4820826186909,
+     29.283829926778946
+    ]
+   },
+   "properties": {
+    "id": "R28",
+    "kind": "RELAY",
+    "label": "Relay 28",
+    "antenna_h_m": 30.0,
+    "activation_cost": 10.4,
+    "elevation_m": 963.5
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     79.56937164281412,
+     29.46678898860956
+    ]
+   },
+   "properties": {
+    "id": "R29",
+    "kind": "RELAY",
+    "label": "Relay 29",
+    "antenna_h_m": 30.0,
+    "activation_cost": 16.2,
+    "elevation_m": 1165.5
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     79.55607028665545,
+     29.27523853031963
+    ]
+   },
+   "properties": {
+    "id": "R30",
+    "kind": "RELAY",
+    "label": "Relay 30",
+    "antenna_h_m": 30.0,
+    "activation_cost": 10.1,
+    "elevation_m": 1088.1
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     79.31560950709587,
+     29.441916313100737
+    ]
+   },
+   "properties": {
+    "id": "R31",
+    "kind": "RELAY",
+    "label": "Relay 31",
+    "antenna_h_m": 30.0,
+    "activation_cost": 10.9,
+    "elevation_m": 1670.5
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     79.35257971484435,
+     29.324976042116063
+    ]
+   },
+   "properties": {
+    "id": "R32",
+    "kind": "RELAY",
+    "label": "Relay 32",
+    "antenna_h_m": 30.0,
+    "activation_cost": 10.5,
+    "elevation_m": 1696.8
+   }
+  }
+ ]
+}

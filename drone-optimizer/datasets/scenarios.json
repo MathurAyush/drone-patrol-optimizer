@@ -1,0 +1,65 @@
+{
+  "scenarios": [
+    {
+      "id": 1,
+      "name": "Routine patrol",
+      "type": "patrol",
+      "description": "Single drone flies the full checkpoint circuit and returns to base.",
+      "params": {
+        "exact": true
+      }
+    },
+    {
+      "id": 2,
+      "name": "Single threat alert",
+      "type": "dispatch",
+      "description": "Threat at Z1 (highest score). Dispatch the fastest drone via A*.",
+      "params": {
+        "zone": "Z1",
+        "method": "astar"
+      }
+    },
+    {
+      "id": 3,
+      "name": "Multiple simultaneous alerts",
+      "type": "allocate",
+      "description": "All zones demand patrol at once. Max-flow allocates flight-hours; min-cut names the bottleneck.",
+      "params": {}
+    },
+    {
+      "id": 4,
+      "name": "Relay tower failure",
+      "type": "relay",
+      "description": "Relay R5 fails. Recompute the minimum backbone and report critical links.",
+      "params": {
+        "failed": "R5"
+      }
+    },
+    {
+      "id": 5,
+      "name": "New threat mid-patrol",
+      "type": "reroute",
+      "description": "New threat at Z8 appears mid-circuit. Compare A* dispatch vs NN reroute cost.",
+      "params": {
+        "zone": "Z8"
+      }
+    },
+    {
+      "id": 6,
+      "name": "Full fleet stress test",
+      "type": "stress",
+      "description": "Run patrol + allocate + relay + a burst of dispatches end to end.",
+      "params": {}
+    },
+    {
+      "id": 7,
+      "name": "Multi-drone fleet routing",
+      "type": "fleet_vrp",
+      "description": "Split the survey across a 3-drone fleet with 60 km range each (OR-Tools VRP); compare total distance to the single-drone exact circuit.",
+      "params": {
+        "num_drones": 3,
+        "range_km": 60.0
+      }
+    }
+  ]
+}

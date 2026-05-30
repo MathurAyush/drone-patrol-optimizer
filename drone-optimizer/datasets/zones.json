@@ -1,0 +1,1351 @@
+{
+  "meta": {
+    "name": "border-sector-7",
+    "description": "Synthetic border-sector zone graph for the Smart Drone Patrol Route Optimizer.",
+    "seed": 1947,
+    "units": "kilometres",
+    "region_extent_km": {
+      "x": 44,
+      "y": 32
+    },
+    "fleet": {
+      "drones": 3,
+      "bases": [
+        "BASE_A",
+        "BASE_B"
+      ],
+      "flow_sink": "CMD"
+    },
+    "counts": {
+      "nodes": 53,
+      "flight_edges": 45,
+      "radio_edges": 72
+    }
+  },
+  "nodes": [
+    {
+      "id": "CMD",
+      "kind": "COMMAND",
+      "x": 22.0,
+      "y": 3.0,
+      "label": "Command Post"
+    },
+    {
+      "id": "BASE_A",
+      "kind": "BASE",
+      "x": 9.0,
+      "y": 5.5,
+      "label": "Base Alpha",
+      "speed_kmh": 60.0
+    },
+    {
+      "id": "BASE_B",
+      "kind": "BASE",
+      "x": 35.0,
+      "y": 5.5,
+      "label": "Base Bravo",
+      "speed_kmh": 60.0
+    },
+    {
+      "id": "Z1",
+      "kind": "ZONE",
+      "x": 6.0,
+      "y": 18.0,
+      "label": "Zone 1",
+      "threat_score": 7.5
+    },
+    {
+      "id": "Z2",
+      "kind": "ZONE",
+      "x": 14.0,
+      "y": 22.0,
+      "label": "Zone 2",
+      "threat_score": 6.2
+    },
+    {
+      "id": "Z3",
+      "kind": "ZONE",
+      "x": 21.0,
+      "y": 26.0,
+      "label": "Zone 3",
+      "threat_score": 2.5
+    },
+    {
+      "id": "Z4",
+      "kind": "ZONE",
+      "x": 28.0,
+      "y": 23.0,
+      "label": "Zone 4",
+      "threat_score": 4.7
+    },
+    {
+      "id": "Z5",
+      "kind": "ZONE",
+      "x": 36.0,
+      "y": 19.0,
+      "label": "Zone 5",
+      "threat_score": 6.9
+    },
+    {
+      "id": "Z6",
+      "kind": "ZONE",
+      "x": 12.0,
+      "y": 27.0,
+      "label": "Zone 6",
+      "threat_score": 4.7
+    },
+    {
+      "id": "Z7",
+      "kind": "ZONE",
+      "x": 30.0,
+      "y": 28.0,
+      "label": "Zone 7",
+      "threat_score": 4.6
+    },
+    {
+      "id": "Z8",
+      "kind": "ZONE",
+      "x": 40.0,
+      "y": 25.0,
+      "label": "Zone 8",
+      "threat_score": 6.8
+    },
+    {
+      "id": "C1",
+      "kind": "CHECKPOINT",
+      "x": 10.0,
+      "y": 12.0,
+      "label": "Checkpoint 1"
+    },
+    {
+      "id": "C2",
+      "kind": "CHECKPOINT",
+      "x": 18.0,
+      "y": 14.0,
+      "label": "Checkpoint 2"
+    },
+    {
+      "id": "C3",
+      "kind": "CHECKPOINT",
+      "x": 25.0,
+      "y": 13.0,
+      "label": "Checkpoint 3"
+    },
+    {
+      "id": "C4",
+      "kind": "CHECKPOINT",
+      "x": 32.0,
+      "y": 12.0,
+      "label": "Checkpoint 4"
+    },
+    {
+      "id": "C5",
+      "kind": "CHECKPOINT",
+      "x": 38.0,
+      "y": 14.0,
+      "label": "Checkpoint 5"
+    },
+    {
+      "id": "C6",
+      "kind": "CHECKPOINT",
+      "x": 8.0,
+      "y": 24.0,
+      "label": "Checkpoint 6"
+    },
+    {
+      "id": "C7",
+      "kind": "CHECKPOINT",
+      "x": 20.0,
+      "y": 30.0,
+      "label": "Checkpoint 7"
+    },
+    {
+      "id": "C8",
+      "kind": "CHECKPOINT",
+      "x": 27.0,
+      "y": 19.0,
+      "label": "Checkpoint 8"
+    },
+    {
+      "id": "C9",
+      "kind": "CHECKPOINT",
+      "x": 34.0,
+      "y": 27.0,
+      "label": "Checkpoint 9"
+    },
+    {
+      "id": "C10",
+      "kind": "CHECKPOINT",
+      "x": 42.0,
+      "y": 18.0,
+      "label": "Checkpoint 10"
+    },
+    {
+      "id": "R1",
+      "kind": "RELAY",
+      "x": 4.23,
+      "y": 3.46,
+      "label": "Relay 1",
+      "activation_cost": 98.6
+    },
+    {
+      "id": "R2",
+      "kind": "RELAY",
+      "x": 2.27,
+      "y": 11.34,
+      "label": "Relay 2",
+      "activation_cost": 88.6
+    },
+    {
+      "id": "R3",
+      "kind": "RELAY",
+      "x": 2.02,
+      "y": 16.69,
+      "label": "Relay 3",
+      "activation_cost": 99.8
+    },
+    {
+      "id": "R4",
+      "kind": "RELAY",
+      "x": 5.63,
+      "y": 20.66,
+      "label": "Relay 4",
+      "activation_cost": 88.3
+    },
+    {
+      "id": "R5",
+      "kind": "RELAY",
+      "x": 5.23,
+      "y": 26.58,
+      "label": "Relay 5",
+      "activation_cost": 109.0
+    },
+    {
+      "id": "R6",
+      "kind": "RELAY",
+      "x": 10.99,
+      "y": 4.42,
+      "label": "Relay 6",
+      "activation_cost": 68.8
+    },
+    {
+      "id": "R7",
+      "kind": "RELAY",
+      "x": 8.96,
+      "y": 11.93,
+      "label": "Relay 7",
+      "activation_cost": 96.2
+    },
+    {
+      "id": "R8",
+      "kind": "RELAY",
+      "x": 7.99,
+      "y": 17.61,
+      "label": "Relay 8",
+      "activation_cost": 62.4
+    },
+    {
+      "id": "R9",
+      "kind": "RELAY",
+      "x": 10.09,
+      "y": 22.9,
+      "label": "Relay 9",
+      "activation_cost": 85.1
+    },
+    {
+      "id": "R10",
+      "kind": "RELAY",
+      "x": 9.92,
+      "y": 26.05,
+      "label": "Relay 10",
+      "activation_cost": 49.3
+    },
+    {
+      "id": "R11",
+      "kind": "RELAY",
+      "x": 14.34,
+      "y": 6.1,
+      "label": "Relay 11",
+      "activation_cost": 75.8
+    },
+    {
+      "id": "R12",
+      "kind": "RELAY",
+      "x": 15.31,
+      "y": 10.96,
+      "label": "Relay 12",
+      "activation_cost": 71.9
+    },
+    {
+      "id": "R13",
+      "kind": "RELAY",
+      "x": 16.06,
+      "y": 16.82,
+      "label": "Relay 13",
+      "activation_cost": 43.5
+    },
+    {
+      "id": "R14",
+      "kind": "RELAY",
+      "x": 15.99,
+      "y": 23.92,
+      "label": "Relay 14",
+      "activation_cost": 59.7
+    },
+    {
+      "id": "R15",
+      "kind": "RELAY",
+      "x": 17.64,
+      "y": 25.88,
+      "label": "Relay 15",
+      "activation_cost": 81.1
+    },
+    {
+      "id": "R16",
+      "kind": "RELAY",
+      "x": 20.3,
+      "y": 3.78,
+      "label": "Relay 16",
+      "activation_cost": 84.9
+    },
+    {
+      "id": "R17",
+      "kind": "RELAY",
+      "x": 23.91,
+      "y": 10.96,
+      "label": "Relay 17",
+      "activation_cost": 107.2
+    },
+    {
+      "id": "R18",
+      "kind": "RELAY",
+      "x": 21.04,
+      "y": 16.49,
+      "label": "Relay 18",
+      "activation_cost": 103.3
+    },
+    {
+      "id": "R19",
+      "kind": "RELAY",
+      "x": 21.04,
+      "y": 22.05,
+      "label": "Relay 19",
+      "activation_cost": 68.5
+    },
+    {
+      "id": "R20",
+      "kind": "RELAY",
+      "x": 20.75,
+      "y": 29.96,
+      "label": "Relay 20",
+      "activation_cost": 66.5
+    },
+    {
+      "id": "R21",
+      "kind": "RELAY",
+      "x": 26.95,
+      "y": 4.86,
+      "label": "Relay 21",
+      "activation_cost": 77.8
+    },
+    {
+      "id": "R22",
+      "kind": "RELAY",
+      "x": 26.64,
+      "y": 10.22,
+      "label": "Relay 22",
+      "activation_cost": 115.5
+    },
+    {
+      "id": "R23",
+      "kind": "RELAY",
+      "x": 26.72,
+      "y": 17.84,
+      "label": "Relay 23",
+      "activation_cost": 43.7
+    },
+    {
+      "id": "R24",
+      "kind": "RELAY",
+      "x": 29.79,
+      "y": 21.72,
+      "label": "Relay 24",
+      "activation_cost": 81.0
+    },
+    {
+      "id": "R25",
+      "kind": "RELAY",
+      "x": 29.57,
+      "y": 28.89,
+      "label": "Relay 25",
+      "activation_cost": 69.8
+    },
+    {
+      "id": "R26",
+      "kind": "RELAY",
+      "x": 32.69,
+      "y": 2.65,
+      "label": "Relay 26",
+      "activation_cost": 115.6
+    },
+    {
+      "id": "R27",
+      "kind": "RELAY",
+      "x": 31.81,
+      "y": 10.45,
+      "label": "Relay 27",
+      "activation_cost": 111.5
+    },
+    {
+      "id": "R28",
+      "kind": "RELAY",
+      "x": 33.98,
+      "y": 14.51,
+      "label": "Relay 28",
+      "activation_cost": 80.0
+    },
+    {
+      "id": "R29",
+      "kind": "RELAY",
+      "x": 33.01,
+      "y": 20.94,
+      "label": "Relay 29",
+      "activation_cost": 83.7
+    },
+    {
+      "id": "R30",
+      "kind": "RELAY",
+      "x": 34.37,
+      "y": 29.09,
+      "label": "Relay 30",
+      "activation_cost": 42.9
+    },
+    {
+      "id": "R31",
+      "kind": "RELAY",
+      "x": 39.79,
+      "y": 2.0,
+      "label": "Relay 31",
+      "activation_cost": 103.3
+    },
+    {
+      "id": "R32",
+      "kind": "RELAY",
+      "x": 41.49,
+      "y": 9.58,
+      "label": "Relay 32",
+      "activation_cost": 86.3
+    }
+  ],
+  "edges": [
+    {
+      "u": "CMD",
+      "v": "C3",
+      "kind": "FLIGHT_PATH",
+      "distance_km": 10.44,
+      "wind_resistance": 0.448,
+      "no_fly": false,
+      "effective_cost": 15.117
+    },
+    {
+      "u": "CMD",
+      "v": "C2",
+      "kind": "FLIGHT_PATH",
+      "distance_km": 11.705,
+      "wind_resistance": 0.064,
+      "no_fly": false,
+      "effective_cost": 12.454
+    },
+    {
+      "u": "BASE_A",
+      "v": "C1",
+      "kind": "FLIGHT_PATH",
+      "distance_km": 6.576,
+      "wind_resistance": 0.424,
+      "no_fly": false,
+      "effective_cost": 9.364
+    },
+    {
+      "u": "BASE_B",
+      "v": "C4",
+      "kind": "FLIGHT_PATH",
+      "distance_km": 7.159,
+      "wind_resistance": 0.339,
+      "no_fly": false,
+      "effective_cost": 9.586
+    },
+    {
+      "u": "BASE_B",
+      "v": "C5",
+      "kind": "FLIGHT_PATH",
+      "distance_km": 9.014,
+      "wind_resistance": 0.169,
+      "no_fly": false,
+      "effective_cost": 10.537
+    },
+    {
+      "u": "Z1",
+      "v": "C6",
+      "kind": "FLIGHT_PATH",
+      "distance_km": 6.325,
+      "wind_resistance": 0.512,
+      "no_fly": true,
+      "effective_cost": 9.563
+    },
+    {
+      "u": "Z1",
+      "v": "C1",
+      "kind": "FLIGHT_PATH",
+      "distance_km": 7.211,
+      "wind_resistance": 0.204,
+      "no_fly": false,
+      "effective_cost": 8.682
+    },
+    {
+      "u": "Z1",
+      "v": "Z2",
+      "kind": "FLIGHT_PATH",
+      "distance_km": 8.944,
+      "wind_resistance": 0.597,
+      "no_fly": true,
+      "effective_cost": 14.284
+    },
+    {
+      "u": "Z1",
+      "v": "Z6",
+      "kind": "FLIGHT_PATH",
+      "distance_km": 10.817,
+      "wind_resistance": 0.471,
+      "no_fly": false,
+      "effective_cost": 15.912
+    },
+    {
+      "u": "Z2",
+      "v": "Z6",
+      "kind": "FLIGHT_PATH",
+      "distance_km": 5.385,
+      "wind_resistance": 0.51,
+      "no_fly": false,
+      "effective_cost": 8.131
+    },
+    {
+      "u": "Z2",
+      "v": "C6",
+      "kind": "FLIGHT_PATH",
+      "distance_km": 6.325,
+      "wind_resistance": 0.376,
+      "no_fly": false,
+      "effective_cost": 8.703
+    },
+    {
+      "u": "Z2",
+      "v": "Z3",
+      "kind": "FLIGHT_PATH",
+      "distance_km": 8.062,
+      "wind_resistance": 0.553,
+      "no_fly": false,
+      "effective_cost": 12.52
+    },
+    {
+      "u": "Z3",
+      "v": "C7",
+      "kind": "FLIGHT_PATH",
+      "distance_km": 4.123,
+      "wind_resistance": 0.021,
+      "no_fly": false,
+      "effective_cost": 4.21
+    },
+    {
+      "u": "Z3",
+      "v": "Z4",
+      "kind": "FLIGHT_PATH",
+      "distance_km": 7.616,
+      "wind_resistance": 0.355,
+      "no_fly": false,
+      "effective_cost": 10.32
+    },
+    {
+      "u": "Z3",
+      "v": "Z6",
+      "kind": "FLIGHT_PATH",
+      "distance_km": 9.055,
+      "wind_resistance": 0.058,
+      "no_fly": false,
+      "effective_cost": 9.58
+    },
+    {
+      "u": "Z4",
+      "v": "C8",
+      "kind": "FLIGHT_PATH",
+      "distance_km": 4.123,
+      "wind_resistance": 0.052,
+      "no_fly": false,
+      "effective_cost": 4.337
+    },
+    {
+      "u": "Z4",
+      "v": "Z7",
+      "kind": "FLIGHT_PATH",
+      "distance_km": 5.385,
+      "wind_resistance": 0.453,
+      "no_fly": false,
+      "effective_cost": 7.824
+    },
+    {
+      "u": "Z4",
+      "v": "C9",
+      "kind": "FLIGHT_PATH",
+      "distance_km": 7.211,
+      "wind_resistance": 0.517,
+      "no_fly": false,
+      "effective_cost": 10.939
+    },
+    {
+      "u": "Z5",
+      "v": "C5",
+      "kind": "FLIGHT_PATH",
+      "distance_km": 5.385,
+      "wind_resistance": 0.428,
+      "no_fly": false,
+      "effective_cost": 7.69
+    },
+    {
+      "u": "Z5",
+      "v": "C10",
+      "kind": "FLIGHT_PATH",
+      "distance_km": 6.083,
+      "wind_resistance": 0.22,
+      "no_fly": false,
+      "effective_cost": 7.421
+    },
+    {
+      "u": "Z5",
+      "v": "Z8",
+      "kind": "FLIGHT_PATH",
+      "distance_km": 7.211,
+      "wind_resistance": 0.101,
+      "no_fly": false,
+      "effective_cost": 7.939
+    },
+    {
+      "u": "Z5",
+      "v": "C4",
+      "kind": "FLIGHT_PATH",
+      "distance_km": 8.062,
+      "wind_resistance": 0.039,
+      "no_fly": false,
+      "effective_cost": 8.376
+    },
+    {
+      "u": "Z6",
+      "v": "C6",
+      "kind": "FLIGHT_PATH",
+      "distance_km": 5.0,
+      "wind_resistance": 0.054,
+      "no_fly": false,
+      "effective_cost": 5.27
+    },
+    {
+      "u": "Z6",
+      "v": "C7",
+      "kind": "FLIGHT_PATH",
+      "distance_km": 8.544,
+      "wind_resistance": 0.152,
+      "no_fly": false,
+      "effective_cost": 9.843
+    },
+    {
+      "u": "Z7",
+      "v": "C9",
+      "kind": "FLIGHT_PATH",
+      "distance_km": 4.123,
+      "wind_resistance": 0.11,
+      "no_fly": false,
+      "effective_cost": 4.577
+    },
+    {
+      "u": "Z7",
+      "v": "Z3",
+      "kind": "FLIGHT_PATH",
+      "distance_km": 9.22,
+      "wind_resistance": 0.014,
+      "no_fly": false,
+      "effective_cost": 9.349
+    },
+    {
+      "u": "Z7",
+      "v": "C8",
+      "kind": "FLIGHT_PATH",
+      "distance_km": 9.487,
+      "wind_resistance": 0.017,
+      "no_fly": false,
+      "effective_cost": 9.648
+    },
+    {
+      "u": "Z8",
+      "v": "C9",
+      "kind": "FLIGHT_PATH",
+      "distance_km": 6.325,
+      "wind_resistance": 0.108,
+      "no_fly": false,
+      "effective_cost": 7.008
+    },
+    {
+      "u": "Z8",
+      "v": "C10",
+      "kind": "FLIGHT_PATH",
+      "distance_km": 7.28,
+      "wind_resistance": 0.479,
+      "no_fly": false,
+      "effective_cost": 10.767
+    },
+    {
+      "u": "Z8",
+      "v": "Z7",
+      "kind": "FLIGHT_PATH",
+      "distance_km": 10.44,
+      "wind_resistance": 0.267,
+      "no_fly": false,
+      "effective_cost": 13.227
+    },
+    {
+      "u": "C1",
+      "v": "C2",
+      "kind": "FLIGHT_PATH",
+      "distance_km": 8.246,
+      "wind_resistance": 0.424,
+      "no_fly": false,
+      "effective_cost": 11.742
+    },
+    {
+      "u": "C1",
+      "v": "Z2",
+      "kind": "FLIGHT_PATH",
+      "distance_km": 10.77,
+      "wind_resistance": 0.321,
+      "no_fly": false,
+      "effective_cost": 14.227
+    },
+    {
+      "u": "C2",
+      "v": "C3",
+      "kind": "FLIGHT_PATH",
+      "distance_km": 7.071,
+      "wind_resistance": 0.169,
+      "no_fly": false,
+      "effective_cost": 8.266
+    },
+    {
+      "u": "C2",
+      "v": "Z2",
+      "kind": "FLIGHT_PATH",
+      "distance_km": 8.944,
+      "wind_resistance": 0.081,
+      "no_fly": false,
+      "effective_cost": 9.668
+    },
+    {
+      "u": "C2",
+      "v": "C8",
+      "kind": "FLIGHT_PATH",
+      "distance_km": 10.296,
+      "wind_resistance": 0.058,
+      "no_fly": false,
+      "effective_cost": 10.893
+    },
+    {
+      "u": "C3",
+      "v": "C8",
+      "kind": "FLIGHT_PATH",
+      "distance_km": 6.325,
+      "wind_resistance": 0.095,
+      "no_fly": false,
+      "effective_cost": 6.926
+    },
+    {
+      "u": "C3",
+      "v": "C4",
+      "kind": "FLIGHT_PATH",
+      "distance_km": 7.071,
+      "wind_resistance": 0.145,
+      "no_fly": false,
+      "effective_cost": 8.096
+    },
+    {
+      "u": "C4",
+      "v": "C5",
+      "kind": "FLIGHT_PATH",
+      "distance_km": 6.325,
+      "wind_resistance": 0.003,
+      "no_fly": true,
+      "effective_cost": 6.344
+    },
+    {
+      "u": "C5",
+      "v": "C10",
+      "kind": "FLIGHT_PATH",
+      "distance_km": 5.657,
+      "wind_resistance": 0.195,
+      "no_fly": false,
+      "effective_cost": 6.76
+    },
+    {
+      "u": "C7",
+      "v": "Z2",
+      "kind": "FLIGHT_PATH",
+      "distance_km": 10.0,
+      "wind_resistance": 0.439,
+      "no_fly": false,
+      "effective_cost": 14.39
+    },
+    {
+      "u": "C7",
+      "v": "Z7",
+      "kind": "FLIGHT_PATH",
+      "distance_km": 10.198,
+      "wind_resistance": 0.489,
+      "no_fly": false,
+      "effective_cost": 15.185
+    },
+    {
+      "u": "C8",
+      "v": "C4",
+      "kind": "FLIGHT_PATH",
+      "distance_km": 8.602,
+      "wind_resistance": 0.235,
+      "no_fly": true,
+      "effective_cost": 10.623
+    },
+    {
+      "u": "C8",
+      "v": "Z5",
+      "kind": "FLIGHT_PATH",
+      "distance_km": 9.0,
+      "wind_resistance": 0.587,
+      "no_fly": false,
+      "effective_cost": 14.283
+    },
+    {
+      "u": "C9",
+      "v": "Z5",
+      "kind": "FLIGHT_PATH",
+      "distance_km": 8.246,
+      "wind_resistance": 0.019,
+      "no_fly": false,
+      "effective_cost": 8.403
+    },
+    {
+      "u": "C10",
+      "v": "C4",
+      "kind": "FLIGHT_PATH",
+      "distance_km": 11.662,
+      "wind_resistance": 0.346,
+      "no_fly": false,
+      "effective_cost": 15.697
+    },
+    {
+      "u": "CMD",
+      "v": "R16",
+      "kind": "RADIO_LINK",
+      "distance_km": 1.87,
+      "link_cost": 4.63
+    },
+    {
+      "u": "CMD",
+      "v": "R21",
+      "kind": "RADIO_LINK",
+      "distance_km": 5.288,
+      "link_cost": 20.84
+    },
+    {
+      "u": "CMD",
+      "v": "R17",
+      "kind": "RADIO_LINK",
+      "distance_km": 8.186,
+      "link_cost": 29.69
+    },
+    {
+      "u": "CMD",
+      "v": "R11",
+      "kind": "RADIO_LINK",
+      "distance_km": 8.264,
+      "link_cost": 16.84
+    },
+    {
+      "u": "R1",
+      "v": "R6",
+      "kind": "RADIO_LINK",
+      "distance_km": 6.828,
+      "link_cost": 26.55
+    },
+    {
+      "u": "R1",
+      "v": "R2",
+      "kind": "RADIO_LINK",
+      "distance_km": 8.12,
+      "link_cost": 18.97
+    },
+    {
+      "u": "R2",
+      "v": "R3",
+      "kind": "RADIO_LINK",
+      "distance_km": 5.356,
+      "link_cost": 14.49
+    },
+    {
+      "u": "R2",
+      "v": "R7",
+      "kind": "RADIO_LINK",
+      "distance_km": 6.716,
+      "link_cost": 24.47
+    },
+    {
+      "u": "R2",
+      "v": "R8",
+      "kind": "RADIO_LINK",
+      "distance_km": 8.487,
+      "link_cost": 31.19
+    },
+    {
+      "u": "R3",
+      "v": "R4",
+      "kind": "RADIO_LINK",
+      "distance_km": 5.366,
+      "link_cost": 20.03
+    },
+    {
+      "u": "R3",
+      "v": "R8",
+      "kind": "RADIO_LINK",
+      "distance_km": 6.04,
+      "link_cost": 15.7
+    },
+    {
+      "u": "R3",
+      "v": "R7",
+      "kind": "RADIO_LINK",
+      "distance_km": 8.416,
+      "link_cost": 30.81
+    },
+    {
+      "u": "R4",
+      "v": "R8",
+      "kind": "RADIO_LINK",
+      "distance_km": 3.856,
+      "link_cost": 9.07
+    },
+    {
+      "u": "R4",
+      "v": "R9",
+      "kind": "RADIO_LINK",
+      "distance_km": 4.991,
+      "link_cost": 19.83
+    },
+    {
+      "u": "R4",
+      "v": "R5",
+      "kind": "RADIO_LINK",
+      "distance_km": 5.933,
+      "link_cost": 23.48
+    },
+    {
+      "u": "R5",
+      "v": "R10",
+      "kind": "RADIO_LINK",
+      "distance_km": 4.72,
+      "link_cost": 14.59
+    },
+    {
+      "u": "R5",
+      "v": "R9",
+      "kind": "RADIO_LINK",
+      "distance_km": 6.096,
+      "link_cost": 19.88
+    },
+    {
+      "u": "R6",
+      "v": "R11",
+      "kind": "RADIO_LINK",
+      "distance_km": 3.748,
+      "link_cost": 8.31
+    },
+    {
+      "u": "R6",
+      "v": "R7",
+      "kind": "RADIO_LINK",
+      "distance_km": 7.78,
+      "link_cost": 25.34
+    },
+    {
+      "u": "R6",
+      "v": "R12",
+      "kind": "RADIO_LINK",
+      "distance_km": 7.838,
+      "link_cost": 28.83
+    },
+    {
+      "u": "R7",
+      "v": "R8",
+      "kind": "RADIO_LINK",
+      "distance_km": 5.762,
+      "link_cost": 13.89
+    },
+    {
+      "u": "R7",
+      "v": "R12",
+      "kind": "RADIO_LINK",
+      "distance_km": 6.424,
+      "link_cost": 25.13
+    },
+    {
+      "u": "R8",
+      "v": "R9",
+      "kind": "RADIO_LINK",
+      "distance_km": 5.692,
+      "link_cost": 14.42
+    },
+    {
+      "u": "R9",
+      "v": "R10",
+      "kind": "RADIO_LINK",
+      "distance_km": 3.155,
+      "link_cost": 12.1
+    },
+    {
+      "u": "R9",
+      "v": "R14",
+      "kind": "RADIO_LINK",
+      "distance_km": 5.988,
+      "link_cost": 14.37
+    },
+    {
+      "u": "R10",
+      "v": "R14",
+      "kind": "RADIO_LINK",
+      "distance_km": 6.433,
+      "link_cost": 13.6
+    },
+    {
+      "u": "R10",
+      "v": "R4",
+      "kind": "RADIO_LINK",
+      "distance_km": 6.889,
+      "link_cost": 18.34
+    },
+    {
+      "u": "R11",
+      "v": "R12",
+      "kind": "RADIO_LINK",
+      "distance_km": 4.956,
+      "link_cost": 10.47
+    },
+    {
+      "u": "R11",
+      "v": "R16",
+      "kind": "RADIO_LINK",
+      "distance_km": 6.396,
+      "link_cost": 17.61
+    },
+    {
+      "u": "R11",
+      "v": "R7",
+      "kind": "RADIO_LINK",
+      "distance_km": 7.933,
+      "link_cost": 30.68
+    },
+    {
+      "u": "R12",
+      "v": "R13",
+      "kind": "RADIO_LINK",
+      "distance_km": 5.908,
+      "link_cost": 15.15
+    },
+    {
+      "u": "R13",
+      "v": "R18",
+      "kind": "RADIO_LINK",
+      "distance_km": 4.991,
+      "link_cost": 17.12
+    },
+    {
+      "u": "R13",
+      "v": "R14",
+      "kind": "RADIO_LINK",
+      "distance_km": 7.1,
+      "link_cost": 17.54
+    },
+    {
+      "u": "R13",
+      "v": "R19",
+      "kind": "RADIO_LINK",
+      "distance_km": 7.222,
+      "link_cost": 21.56
+    },
+    {
+      "u": "R14",
+      "v": "R15",
+      "kind": "RADIO_LINK",
+      "distance_km": 2.562,
+      "link_cost": 8.58
+    },
+    {
+      "u": "R14",
+      "v": "R19",
+      "kind": "RADIO_LINK",
+      "distance_km": 5.385,
+      "link_cost": 18.63
+    },
+    {
+      "u": "R15",
+      "v": "R19",
+      "kind": "RADIO_LINK",
+      "distance_km": 5.121,
+      "link_cost": 19.0
+    },
+    {
+      "u": "R15",
+      "v": "R20",
+      "kind": "RADIO_LINK",
+      "distance_km": 5.13,
+      "link_cost": 17.22
+    },
+    {
+      "u": "R15",
+      "v": "R10",
+      "kind": "RADIO_LINK",
+      "distance_km": 7.722,
+      "link_cost": 28.37
+    },
+    {
+      "u": "R16",
+      "v": "R21",
+      "kind": "RADIO_LINK",
+      "distance_km": 6.737,
+      "link_cost": 20.45
+    },
+    {
+      "u": "R16",
+      "v": "R17",
+      "kind": "RADIO_LINK",
+      "distance_km": 8.036,
+      "link_cost": 23.38
+    },
+    {
+      "u": "R17",
+      "v": "R22",
+      "kind": "RADIO_LINK",
+      "distance_km": 2.829,
+      "link_cost": 7.9
+    },
+    {
+      "u": "R17",
+      "v": "R18",
+      "kind": "RADIO_LINK",
+      "distance_km": 6.23,
+      "link_cost": 16.99
+    },
+    {
+      "u": "R17",
+      "v": "R21",
+      "kind": "RADIO_LINK",
+      "distance_km": 6.816,
+      "link_cost": 18.89
+    },
+    {
+      "u": "R17",
+      "v": "R23",
+      "kind": "RADIO_LINK",
+      "distance_km": 7.432,
+      "link_cost": 17.87
+    },
+    {
+      "u": "R18",
+      "v": "R19",
+      "kind": "RADIO_LINK",
+      "distance_km": 5.56,
+      "link_cost": 18.92
+    },
+    {
+      "u": "R18",
+      "v": "R23",
+      "kind": "RADIO_LINK",
+      "distance_km": 5.838,
+      "link_cost": 15.15
+    },
+    {
+      "u": "R19",
+      "v": "R23",
+      "kind": "RADIO_LINK",
+      "distance_km": 7.07,
+      "link_cost": 15.8
+    },
+    {
+      "u": "R20",
+      "v": "R14",
+      "kind": "RADIO_LINK",
+      "distance_km": 7.69,
+      "link_cost": 21.3
+    },
+    {
+      "u": "R20",
+      "v": "R19",
+      "kind": "RADIO_LINK",
+      "distance_km": 7.915,
+      "link_cost": 16.3
+    },
+    {
+      "u": "R20",
+      "v": "R25",
+      "kind": "RADIO_LINK",
+      "distance_km": 8.885,
+      "link_cost": 27.03
+    },
+    {
+      "u": "R21",
+      "v": "R22",
+      "kind": "RADIO_LINK",
+      "distance_km": 5.369,
+      "link_cost": 16.21
+    },
+    {
+      "u": "R21",
+      "v": "R26",
+      "kind": "RADIO_LINK",
+      "distance_km": 6.151,
+      "link_cost": 13.04
+    },
+    {
+      "u": "R22",
+      "v": "R27",
+      "kind": "RADIO_LINK",
+      "distance_km": 5.175,
+      "link_cost": 11.74
+    },
+    {
+      "u": "R22",
+      "v": "R23",
+      "kind": "RADIO_LINK",
+      "distance_km": 7.62,
+      "link_cost": 27.93
+    },
+    {
+      "u": "R23",
+      "v": "R24",
+      "kind": "RADIO_LINK",
+      "distance_km": 4.948,
+      "link_cost": 11.19
+    },
+    {
+      "u": "R23",
+      "v": "R29",
+      "kind": "RADIO_LINK",
+      "distance_km": 7.012,
+      "link_cost": 21.79
+    },
+    {
+      "u": "R24",
+      "v": "R29",
+      "kind": "RADIO_LINK",
+      "distance_km": 3.313,
+      "link_cost": 6.7
+    },
+    {
+      "u": "R24",
+      "v": "R25",
+      "kind": "RADIO_LINK",
+      "distance_km": 7.173,
+      "link_cost": 19.68
+    },
+    {
+      "u": "R24",
+      "v": "R28",
+      "kind": "RADIO_LINK",
+      "distance_km": 8.339,
+      "link_cost": 28.61
+    },
+    {
+      "u": "R25",
+      "v": "R30",
+      "kind": "RADIO_LINK",
+      "distance_km": 4.804,
+      "link_cost": 9.7
+    },
+    {
+      "u": "R25",
+      "v": "R29",
+      "kind": "RADIO_LINK",
+      "distance_km": 8.662,
+      "link_cost": 23.03
+    },
+    {
+      "u": "R26",
+      "v": "R31",
+      "kind": "RADIO_LINK",
+      "distance_km": 7.13,
+      "link_cost": 15.58
+    },
+    {
+      "u": "R26",
+      "v": "R27",
+      "kind": "RADIO_LINK",
+      "distance_km": 7.849,
+      "link_cost": 22.74
+    },
+    {
+      "u": "R27",
+      "v": "R28",
+      "kind": "RADIO_LINK",
+      "distance_km": 4.604,
+      "link_cost": 11.77
+    },
+    {
+      "u": "R27",
+      "v": "R21",
+      "kind": "RADIO_LINK",
+      "distance_km": 7.407,
+      "link_cost": 23.06
+    },
+    {
+      "u": "R28",
+      "v": "R29",
+      "kind": "RADIO_LINK",
+      "distance_km": 6.503,
+      "link_cost": 18.98
+    },
+    {
+      "u": "R28",
+      "v": "R23",
+      "kind": "RADIO_LINK",
+      "distance_km": 7.987,
+      "link_cost": 21.2
+    },
+    {
+      "u": "R29",
+      "v": "R30",
+      "kind": "RADIO_LINK",
+      "distance_km": 8.263,
+      "link_cost": 18.12
+    },
+    {
+      "u": "R30",
+      "v": "R24",
+      "kind": "RADIO_LINK",
+      "distance_km": 8.677,
+      "link_cost": 21.15
+    },
+    {
+      "u": "R31",
+      "v": "R32",
+      "kind": "RADIO_LINK",
+      "distance_km": 7.768,
+      "link_cost": 18.77
+    },
+    {
+      "u": "R32",
+      "v": "R28",
+      "kind": "RADIO_LINK",
+      "distance_km": 8.984,
+      "link_cost": 18.57
+    }
+  ]
+}

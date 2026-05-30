@@ -1,0 +1,8 @@
+build/
+*.o
+*.out
+__pycache__/
+*.pyc
+.venv/
+.pytest_cache/
+logs/*.json

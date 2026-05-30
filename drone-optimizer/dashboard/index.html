@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Drone Patrol — Tactical Console</title>
+<style>
+  :root {
+    --bg:#0a0e14; --panel:#111722; --panel-2:#0d1320; --line:#1d2735;
+    --ink:#c8d6e5; --ink-dim:#6b7d94; --amber:#f5a623; --teal:#2dd4bf;
+    --cyan:#38bdf8; --red:#ef4444; --green:#4ade80; --violet:#a78bfa;
+    --mono:'JetBrains Mono','SF Mono',ui-monospace,Menlo,monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--ink);font-family:var(--mono);height:100vh;overflow:hidden;
+    background-image:radial-gradient(circle at 20% 10%,rgba(45,212,191,.04),transparent 40%),
+    radial-gradient(circle at 80% 90%,rgba(245,166,35,.04),transparent 40%)}
+  .wrap{display:grid;grid-template-columns:280px 1fr 300px;height:100vh}
+  .col{display:flex;flex-direction:column;min-height:0}
+  header{grid-column:1/-1;height:52px;border-bottom:1px solid var(--line);display:flex;
+    align-items:center;padding:0 18px;gap:14px;background:var(--panel-2)}
+  header .dot{width:9px;height:9px;border-radius:50%;background:var(--green);
+    box-shadow:0 0 10px var(--green);animation:pulse 2s infinite}
+  @keyframes pulse{50%{opacity:.35}}
+  header h1{font-size:14px;font-weight:600;letter-spacing:2px;text-transform:uppercase}
+  header .sub{color:var(--ink-dim);font-size:11px;letter-spacing:1px}
+  header .status{margin-left:auto;font-size:11px;color:var(--ink-dim)}
+  header .status b{color:var(--teal)}
+  aside{background:var(--panel);border-right:1px solid var(--line);padding:14px;overflow-y:auto}
+  aside.right{border-right:none;border-left:1px solid var(--line)}
+  .group{margin-bottom:20px}
+  .group h2{font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--ink-dim);
+    margin-bottom:10px;padding-bottom:6px;border-bottom:1px solid var(--line)}
+  button.op{display:block;width:100%;text-align:left;margin-bottom:6px;background:var(--panel-2);
+    color:var(--ink);border:1px solid var(--line);padding:9px 11px;font-family:var(--mono);
+    font-size:12px;cursor:pointer;border-radius:5px;transition:all .15s;letter-spacing:.3px}
+  button.op:hover{border-color:var(--teal);color:#fff;transform:translateX(2px)}
+  button.op .k{color:var(--teal);font-weight:600}
+  button.op.active{border-color:var(--amber);background:rgba(245,166,35,.08)}
+  select,input{width:100%;background:var(--panel-2);color:var(--ink);border:1px solid var(--line);
+    padding:7px;border-radius:5px;font-family:var(--mono);font-size:12px;margin-bottom:8px}
+  .center{position:relative;background:
+    repeating-linear-gradient(0deg,transparent,transparent 39px,rgba(29,39,53,.4) 39px,rgba(29,39,53,.4) 40px),
+    repeating-linear-gradient(90deg,transparent,transparent 39px,rgba(29,39,53,.4) 39px,rgba(29,39,53,.4) 40px)}
+  canvas{display:block;width:100%;height:100%}
+  .legend{position:absolute;bottom:12px;left:12px;background:rgba(13,19,32,.9);border:1px solid var(--line);
+    border-radius:6px;padding:10px 12px;font-size:10px;line-height:1.8}
+  .legend .row{display:flex;align-items:center;gap:7px}
+  .legend .sw{width:14px;height:3px;border-radius:2px}
+  .legend .mk{width:9px;height:9px;border-radius:50%}
+  .readout{font-size:11px;line-height:1.7}
+  .readout .kv{display:flex;justify-content:space-between;padding:3px 0;border-bottom:1px dotted var(--line)}
+  .readout .kv span:last-child{color:var(--teal)}
+  .bar{height:14px;background:var(--panel-2);border-radius:3px;overflow:hidden;margin:2px 0 8px;border:1px solid var(--line)}
+  .bar>div{height:100%;background:linear-gradient(90deg,var(--teal),var(--cyan))}
+  .bar.short>div{background:linear-gradient(90deg,var(--amber),var(--red))}
+  .zlabel{display:flex;justify-content:space-between;font-size:10px;margin-top:6px}
+  .pill{display:inline-block;padding:1px 6px;border-radius:3px;font-size:10px;background:var(--panel-2);border:1px solid var(--line)}
+  .log{font-size:10px;color:var(--ink-dim);line-height:1.7;max-height:130px;overflow-y:auto}
+  .log .t{color:var(--teal)} .err{color:var(--red)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <span class="dot"></span><h1>Sentinel</h1>
+    <span class="sub">DRONE PATROL · TACTICAL CONSOLE</span>
+    <span class="status">SECTOR <b id="sector">—</b> · ENGINE <b id="engine">offline</b></span>
+  </header>
+  <aside class="col left">
+    <div class="group"><h2>Operations</h2>
+      <button class="op" data-op="patrol"><span class="k">[1]</span> Routine patrol — TSP</button>
+      <button class="op" data-op="dispatch"><span class="k">[2]</span> Threat dispatch — A*</button>
+      <button class="op" data-op="allocate"><span class="k">[3]</span> Allocate — Max flow</button>
+      <button class="op" data-op="relay"><span class="k">[4]</span> Relay backbone — MST</button>
+      <button class="op" data-op="clear"><span class="k">[0]</span> Clear overlays</button>
+    </div>
+    <div class="group" id="dispatchCtl" style="display:none"><h2>Dispatch target</h2>
+      <select id="zoneSel"></select>
+      <select id="methodSel"><option value="astar">A* (heuristic)</option><option value="dijkstra">Dijkstra (exact)</option></select>
+      <button class="op" id="goDispatch"><span class="k">&#9658;</span> Dispatch nearest drone</button>
+    </div>
+    <div class="group" id="relayCtl" style="display:none"><h2>Relay failure sim</h2>
+      <select id="relaySel"><option value="">— none —</option></select>
+      <button class="op" id="goRelay"><span class="k">&#9658;</span> Recompute backbone</button>
+    </div>
+    <div class="group"><h2>Event log</h2><div class="log" id="log"></div></div>
+  </aside>
+  <div class="col center"><canvas id="map"></canvas><div class="legend" id="legend"></div></div>
+  <aside class="col right"><div class="group"><h2 id="panelTitle">Readout</h2>
+    <div class="readout" id="readout">Select an operation to begin.</div></div></aside>
+</div>
+<script>
+const API = location.protocol.startsWith('http') ? '/api' : 'http://127.0.0.1:5000/api';
+const C = {COMMAND:'#f5a623',BASE:'#38bdf8',ZONE:'#ef4444',CHECKPOINT:'#2dd4bf',RELAY:'#6b7d94'};
+let G=null, view={pad:48}, overlay={type:null,data:null}, drones=[], anim=0;
+const id2n={};
+function log(msg,cls=''){const el=document.getElementById('log');const t=new Date().toLocaleTimeString('en-GB');
+  el.innerHTML=`<div><span class="t">${t}</span> <span class="${cls}">${msg}</span></div>`+el.innerHTML;}
+async function jget(path){const r=await fetch(API+path);const j=await r.json();if(!j.ok)throw new Error(j.error||'request failed');return j.data;}
+function bounds(){const xs=G.nodes.map(n=>n.x),ys=G.nodes.map(n=>n.y);
+  return{minx:Math.min(...xs),maxx:Math.max(...xs),miny:Math.min(...ys),maxy:Math.max(...ys)};}
+let B,cv,ctx,W,H;
+function fit(){cv=document.getElementById('map');const r=cv.parentElement.getBoundingClientRect();
+  cv.width=r.width;cv.height=r.height;W=r.width;H=r.height;ctx=cv.getContext('2d');B=bounds();}
+function tx(x){const p=view.pad;return p+(x-B.minx)/(B.maxx-B.minx)*(W-2*p);}
+function ty(y){const p=view.pad;return H-p-(y-B.miny)/(B.maxy-B.miny)*(H-2*p);}
+function draw(){if(!G)return;ctx.clearRect(0,0,W,H);
+  for(const e of G.edges){const a=id2n[e.u],b=id2n[e.v];if(!a||!b)continue;
+    ctx.beginPath();ctx.moveTo(tx(a.x),ty(a.y));ctx.lineTo(tx(b.x),ty(b.y));
+    if(e.kind==='RADIO_LINK'){ctx.strokeStyle='rgba(107,125,148,0.08)';ctx.lineWidth=1;}
+    else{ctx.strokeStyle=e.no_fly?'rgba(239,68,68,0.10)':'rgba(56,189,248,0.10)';ctx.lineWidth=1;}ctx.stroke();}
+  drawOverlay();
+  for(const n of G.nodes){const x=tx(n.x),y=ty(n.y);const isRelay=n.kind==='RELAY';
+    ctx.beginPath();ctx.arc(x,y,isRelay?2.5:5,0,7);ctx.fillStyle=C[n.kind]||'#888';
+    ctx.shadowColor=C[n.kind];ctx.shadowBlur=isRelay?0:8;ctx.fill();ctx.shadowBlur=0;
+    if(n.kind==='ZONE'){const t=n.threat_score||0;ctx.beginPath();ctx.arc(x,y,5+t,0,7);
+      ctx.strokeStyle=`rgba(239,68,68,${0.15+t/40})`;ctx.lineWidth=1;ctx.stroke();}
+    if(!isRelay){ctx.fillStyle='#8aa0b6';ctx.font='9px monospace';ctx.fillText(n.id,x+7,y+3);}}
+  for(const d of drones){const n=id2n[d.position];if(!n)continue;const x=tx(n.x),y=ty(n.y);
+    ctx.save();ctx.translate(x,y);ctx.rotate(anim*0.02+(d.id.charCodeAt(1)||0));ctx.strokeStyle='#fff';ctx.lineWidth=1.5;
+    for(let k=0;k<4;k++){ctx.rotate(Math.PI/2);ctx.beginPath();ctx.arc(8,0,3,0,7);ctx.stroke();
+      ctx.beginPath();ctx.moveTo(0,0);ctx.lineTo(6,0);ctx.stroke();}ctx.restore();
+    ctx.fillStyle='#fff';ctx.font='bold 9px monospace';ctx.fillText(d.id,x-7,y-12);}}
+function drawOverlay(){if(!overlay.type)return;const d=overlay.data;
+  if(overlay.type==='dispatch'){pathLine(d.path,'#38bdf8',3,true);}
+  if(overlay.type==='patrol'){for(const leg of d.legs)pathLine(leg.path,'rgba(45,212,191,0.85)',2.5,false);
+    const all=[];d.legs.forEach(l=>l.path.forEach(p=>all.push(p)));const i=Math.floor(anim/2)%all.length;
+    const n=id2n[all[i]];if(n){ctx.beginPath();ctx.arc(tx(n.x),ty(n.y),5,0,7);ctx.fillStyle='#2dd4bf';
+      ctx.shadowColor='#2dd4bf';ctx.shadowBlur=14;ctx.fill();ctx.shadowBlur=0;}}
+  if(overlay.type==='relay'){for(const e of d.mst_edges){const a=id2n[e.u],b=id2n[e.v];if(!a||!b)continue;
+      ctx.beginPath();ctx.moveTo(tx(a.x),ty(a.y));ctx.lineTo(tx(b.x),ty(b.y));
+      ctx.strokeStyle='rgba(167,139,250,0.9)';ctx.lineWidth=2;ctx.stroke();}
+    for(const e of(d.critical_links||[])){const a=id2n[e.u],b=id2n[e.v];if(!a||!b)continue;
+      ctx.beginPath();ctx.moveTo(tx(a.x),ty(a.y));ctx.lineTo(tx(b.x),ty(b.y));ctx.strokeStyle='#ef4444';ctx.lineWidth=3;ctx.stroke();}}
+  if(overlay.type==='allocate'){for(const f of d.allocation){const a=id2n[f.from],b=id2n[f.to];if(!a||!b)continue;
+      ctx.beginPath();ctx.moveTo(tx(a.x),ty(a.y));ctx.lineTo(tx(b.x),ty(b.y));
+      ctx.strokeStyle='rgba(74,222,128,0.5)';ctx.lineWidth=Math.min(6,1+f.flow);ctx.stroke();}}}
+function pathLine(path,color,w){if(!path||path.length<2)return;ctx.beginPath();
+  for(let i=0;i<path.length;i++){const n=id2n[path[i]];if(!n)continue;const x=tx(n.x),y=ty(n.y);i?ctx.lineTo(x,y):ctx.moveTo(x,y);}
+  ctx.strokeStyle=color;ctx.lineWidth=w;ctx.shadowColor=color;ctx.shadowBlur=10;ctx.stroke();ctx.shadowBlur=0;}
+function setTitle(t){document.getElementById('panelTitle').textContent=t;}
+function readout(html){document.getElementById('readout').innerHTML=html;}
+async function opPatrol(){setActive('patrol');setTitle('Routine patrol · TSP');
+  try{const exact=await jget('/patrol?exact=true');const nn=await jget('/patrol?exact=false');
+    overlay={type:'patrol',data:exact};const gap=((nn.length-exact.length)/exact.length*100).toFixed(1);
+    readout(`<div class="kv"><span>Method</span><span>Held-Karp (exact)</span></div>
+      <div class="kv"><span>Optimal length</span><span>${exact.length.toFixed(2)} km</span></div>
+      <div class="kv"><span>Stops</span><span>${exact.tour.length}</span></div>
+      <div class="kv"><span>NN heuristic</span><span>${nn.length.toFixed(2)} km</span></div>
+      <div class="kv"><span>NN optimality gap</span><span>+${gap}%</span></div>
+      <p style="margin-top:10px;color:var(--ink-dim)">Exact circuit shown. NN trades ${gap}% length for O(n&sup2;) speed — used for live reroutes.</p>`);
+    log('TSP circuit computed · '+exact.length.toFixed(1)+' km');}catch(e){readout(`<span class="err">${e.message}</span>`);log(e.message,'err');}}
+function opDispatch(){setActive('dispatch');setTitle('Threat dispatch');show('dispatchCtl');}
+async function goDispatch(){const zone=document.getElementById('zoneSel').value;const method=document.getElementById('methodSel').value;
+  try{const d=await jget(`/dispatch?zone=${zone}&method=${method}`);overlay={type:'dispatch',data:d};
+    readout(`<div class="kv"><span>Target</span><span>${zone}</span></div>
+      <div class="kv"><span>Nearest drone</span><span>${d.drone}</span></div>
+      <div class="kv"><span>Launch from</span><span>${d.from}</span></div>
+      <div class="kv"><span>Distance</span><span>${d.cost_km.toFixed(2)} km</span></div>
+      <div class="kv"><span>ETA</span><span>${(d.travel_hours*60).toFixed(1)} min</span></div>
+      <div class="kv"><span>Method</span><span>${method}</span></div>
+      <div class="kv"><span>Nodes expanded</span><span>${d.nodes_expanded}</span></div>`);
+    log(`Dispatch ${d.drone} → ${zone} (${d.cost_km.toFixed(1)} km)`);}catch(e){readout(`<span class="err">${e.message}</span>`);log(e.message,'err');}}
+async function opAllocate(){setActive('allocate');setTitle('Flight-hour allocation · Max flow');
+  try{const d=await jget('/allocate');overlay={type:'allocate',data:d};
+    let bars=d.zone_coverage.map(z=>{const pct=z.demand>0?Math.min(100,z.covered/z.demand*100):0;const short=z.shortfall>0.01;
+      return `<div class="zlabel"><span>${z.zone} <span class="pill">T${z.threat_score}</span></span><span>${z.covered.toFixed(1)}/${z.demand.toFixed(1)}h</span></div>
+        <div class="bar ${short?'short':''}"><div style="width:${pct}%"></div></div>`;}).join('');
+    readout(`<div class="kv"><span>Max coverage</span><span>${d.max_flow} flight-hrs</span></div>
+      <div class="kv"><span>Bottleneck edges</span><span>${d.min_cut_edges.length}</span></div>
+      <p style="margin:8px 0;color:var(--ink-dim)">Min-cut = sector limiting coverage → request reinforcement there.</p>${bars}`);
+    log(`Max-flow allocation · coverage ${d.max_flow}h`);}catch(e){readout(`<span class="err">${e.message}</span>`);log(e.message,'err');}}
+async function opRelay(){setActive('relay');setTitle('Relay backbone · MST');show('relayCtl');await goRelay();}
+async function goRelay(){const failed=document.getElementById('relaySel').value;
+  try{const d=await jget('/relay'+(failed?`?failed=${failed}`:''));overlay={type:'relay',data:d};
+    let backup=d.backup?`<div class="kv"><span>Backup (drop ${d.backup.removed})</span><span>${d.backup.connected?'OK':'SPLIT'} · ${d.backup.total_cost.toFixed(0)}</span></div>`:'';
+    readout(`<div class="kv"><span>Connected</span><span>${d.connected?'yes':'NO'}</span></div>
+      <div class="kv"><span>Backbone cost</span><span>${d.total_cost.toFixed(1)}</span></div>
+      <div class="kv"><span>Active links</span><span>${d.mst_edges.length}</span></div>
+      <div class="kv"><span>Critical links</span><span>${d.critical_links.length}</span></div>${backup}
+      <p style="margin-top:10px;color:var(--ink-dim)">Violet = backbone. Red = critical link (single point of failure).</p>`);
+    log(`MST backbone${failed?' w/o '+failed:''} · cost ${d.total_cost.toFixed(0)}`);}catch(e){readout(`<span class="err">${e.message}</span>`);log(e.message,'err');}}
+function opClear(){overlay={type:null};setActive('clear');setTitle('Readout');readout('Overlays cleared.');}
+function setActive(op){document.querySelectorAll('button.op').forEach(b=>b.classList.toggle('active',b.dataset.op===op));
+  document.getElementById('dispatchCtl').style.display=op==='dispatch'?'block':'none';
+  document.getElementById('relayCtl').style.display=op==='relay'?'block':'none';}
+function show(id){document.getElementById(id).style.display='block';}
+function legend(){document.getElementById('legend').innerHTML=`
+  <div class="row"><span class="mk" style="background:${C.COMMAND}"></span>Command</div>
+  <div class="row"><span class="mk" style="background:${C.BASE}"></span>Drone base</div>
+  <div class="row"><span class="mk" style="background:${C.ZONE}"></span>Zone (ring=threat)</div>
+  <div class="row"><span class="mk" style="background:${C.CHECKPOINT}"></span>Checkpoint</div>
+  <div class="row"><span class="mk" style="background:${C.RELAY}"></span>Relay</div>
+  <div class="row"><span class="sw" style="background:#a78bfa"></span>MST backbone</div>
+  <div class="row"><span class="sw" style="background:#ef4444"></span>Critical / min-cut</div>`;}
+async function boot(){
+  try{G=await jget('/graph');document.getElementById('engine').textContent='online';
+    document.getElementById('engine').style.color='var(--green)';}
+  catch(e){G=SAMPLE;document.getElementById('engine').textContent='offline (demo)';
+    log('API offline — using embedded sample graph','err');}
+  document.getElementById('sector').textContent=(G.meta&&G.meta.name)||'—';
+  G.nodes.forEach(n=>id2n[n.id]=n);
+  const zs=G.nodes.filter(n=>n.kind==='ZONE');
+  document.getElementById('zoneSel').innerHTML=zs.map(z=>`<option>${z.id}</option>`).join('');
+  const rs=G.nodes.filter(n=>n.kind==='RELAY').slice(0,20);
+  document.getElementById('relaySel').innerHTML='<option value="">— none —</option>'+rs.map(r=>`<option>${r.id}</option>`).join('');
+  const bases=G.nodes.filter(n=>n.kind==='BASE').map(n=>n.id);
+  drones=[{id:'D1',position:bases[0]},{id:'D2',position:bases[1]||bases[0]},{id:'D3',position:bases[0]}];
+  fit();legend();loop();log('Console online · '+G.nodes.length+' nodes');}
+function loop(){anim++;draw();requestAnimationFrame(loop);}
+document.querySelectorAll('button.op').forEach(b=>b.onclick=()=>{const op=b.dataset.op;
+  ({patrol:opPatrol,dispatch:opDispatch,allocate:opAllocate,relay:opRelay,clear:opClear})[op]();});
+document.getElementById('goDispatch').onclick=goDispatch;
+document.getElementById('goRelay').onclick=goRelay;
+window.addEventListener('keydown',e=>{const m={'1':opPatrol,'2':opDispatch,'3':opAllocate,'4':opRelay,'0':opClear};if(m[e.key])m[e.key]();});
+window.addEventListener('resize',fit);
+const SAMPLE={meta:{name:'demo'},nodes:[{id:'CMD',kind:'COMMAND',x:22,y:3},{id:'BASE_A',kind:'BASE',x:9,y:5},
+  {id:'BASE_B',kind:'BASE',x:35,y:5},{id:'Z1',kind:'ZONE',x:6,y:18,threat_score:7},{id:'Z2',kind:'ZONE',x:21,y:26,threat_score:3},
+  {id:'C1',kind:'CHECKPOINT',x:14,y:14},{id:'C2',kind:'CHECKPOINT',x:30,y:12},{id:'R1',kind:'RELAY',x:12,y:9},{id:'R2',kind:'RELAY',x:26,y:9}],
+  edges:[{u:'BASE_A',v:'C1',kind:'FLIGHT_PATH',no_fly:false},{u:'C1',v:'Z1',kind:'FLIGHT_PATH',no_fly:false},
+  {u:'C1',v:'C2',kind:'FLIGHT_PATH',no_fly:false},{u:'C2',v:'BASE_B',kind:'FLIGHT_PATH',no_fly:false},
+  {u:'CMD',v:'R1',kind:'RADIO_LINK'},{u:'R1',v:'R2',kind:'RADIO_LINK'}]};
+boot();
+</script>
+</body>
+</html>
